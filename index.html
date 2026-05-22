@@ -1,7 +1,5 @@
-# Build Ai Group — index.html
-
-```html
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -293,6 +291,7 @@
       }
     }
   </style>
+
 </head>
 <body>
 
@@ -321,13 +320,16 @@
       صمم بيتك ومدينتك بـ <span>الذكاء الاصطناعي</span>
     </h1>
 
-    <p>
-      منصة Build Ai Group تقوم بإنشاء مخططات ذكية وصور واقعية وتصميمات 3D مع حساب تكلفة البناء بشكل احترافي بناءً على مساحة الأرض والطول والعرض وعدد الغرف ونوع التشطيب.
-    </p>
+```
+<p>
+  منصة Build Ai Group تقوم بإنشاء مخططات ذكية وصور واقعية وتصميمات 3D مع حساب تكلفة البناء بشكل احترافي بناءً على مساحة الأرض والطول والعرض وعدد الغرف ونوع التشطيب.
+</p>
 
-    <button class="btn" onclick="scrollToPlanner()">
-      ابدأ التصميم الآن
-    </button>
+<button class="btn" onclick="scrollToPlanner()">
+  ابدأ التصميم الآن
+</button>
+```
+
   </div>
 
   <div class="hero-image">
@@ -351,26 +353,29 @@
       </p>
     </div>
 
-    <div class="card">
-      <h3>صور واقعية</h3>
-      <p>
-        توليد صور احترافية للمبنى والتشطيب والديكور الخارجي والداخلي.
-      </p>
-    </div>
+```
+<div class="card">
+  <h3>صور واقعية</h3>
+  <p>
+    توليد صور احترافية للمبنى والتشطيب والديكور الخارجي والداخلي.
+  </p>
+</div>
 
-    <div class="card">
-      <h3>حساب التكلفة</h3>
-      <p>
-        حساب تكلفة تقريبية للبناء والتشطيب والكهرباء والسباكة حسب السوق.
-      </p>
-    </div>
+<div class="card">
+  <h3>حساب التكلفة</h3>
+  <p>
+    حساب تكلفة تقريبية للبناء والتشطيب والكهرباء والسباكة حسب السوق.
+  </p>
+</div>
 
-    <div class="card">
-      <h3>3D Preview</h3>
-      <p>
-        عرض ثلاثي الأبعاد للمشروع بشكل حديث ومتطور.
-      </p>
-    </div>
+<div class="card">
+  <h3>3D Preview</h3>
+  <p>
+    عرض ثلاثي الأبعاد للمشروع بشكل حديث ومتطور.
+  </p>
+</div>
+```
+
   </div>
 </section>
 
@@ -384,56 +389,58 @@
 
   <div class="generator">
 
-    <div class="form-grid">
-      <input type="number" id="area" placeholder="المساحة بالمتر">
-      <input type="number" id="width" placeholder="الطول بالمتر">
-      <input type="number" id="height" placeholder="العرض بالمتر">
+```
+<div class="form-grid">
+  <input type="number" id="area" placeholder="المساحة بالمتر">
+  <input type="number" id="width" placeholder="الطول بالمتر">
+  <input type="number" id="height" placeholder="العرض بالمتر">
 
-      <select id="rooms">
-        <option>عدد الغرف</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
+  <select id="rooms">
+    <option>عدد الغرف</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
 
-      <select id="floors">
-        <option>عدد الأدوار</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </select>
+  <select id="floors">
+    <option>عدد الأدوار</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
 
-      <select id="style">
-        <option>نوع التصميم</option>
-        <option>مودرن</option>
-        <option>كلاسيك</option>
-        <option>فاخر</option>
-      </select>
-    </div>
+  <select id="style">
+    <option>نوع التصميم</option>
+    <option>مودرن</option>
+    <option>كلاسيك</option>
+    <option>فاخر</option>
+  </select>
+</div>
 
-    <br>
+<br>
 
-    <button class="btn" onclick="generateDesign()">
-      Generate AI Design
-    </button>
+<button class="btn" onclick="generateDesign()">
+  Generate AI Design
+</button>
 
-    <div class="result" id="result">
-      <h2>النتيجة النهائية</h2>
+<div class="result" id="result">
+  <h2>النتيجة النهائية</h2>
 
-      <p id="resultText"></p>
+  <p id="resultText"></p>
 
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400&auto=format&fit=crop" alt="Generated House">
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400&auto=format&fit=crop" alt="Generated House">
 
-      <div class="pricing" id="pricing">
-      </div>
+  <div class="pricing" id="pricing">
+  </div>
 
-      <div class="warning">
-        الأسعار الظاهرة تقديرية حسب متوسط أسعار السوق الحالية وقد تختلف حسب المنطقة والخامات والمقاول. يجب استشارة مهندس أو مقاول متخصص قبل التنفيذ الفعلي.
-      </div>
-    </div>
+  <div class="warning">
+    الأسعار الظاهرة تقديرية حسب متوسط أسعار السوق الحالية وقد تختلف حسب المنطقة والخامات والمقاول. يجب استشارة مهندس أو مقاول متخصص قبل التنفيذ الفعلي.
+  </div>
+</div>
+```
 
   </div>
 </section>
@@ -453,17 +460,20 @@
       <p>تشطيب اقتصادي وخامات جيدة.</p>
     </div>
 
-    <div class="price-box">
-      <h3>متوسط</h3>
-      <div class="price">4500 EGP/m²</div>
-      <p>تشطيب مودرن وخامات ممتازة.</p>
-    </div>
+```
+<div class="price-box">
+  <h3>متوسط</h3>
+  <div class="price">4500 EGP/m²</div>
+  <p>تشطيب مودرن وخامات ممتازة.</p>
+</div>
 
-    <div class="price-box">
-      <h3>فاخر</h3>
-      <div class="price">6500 EGP/m²</div>
-      <p>تشطيب فاخر وديكورات عالية الجودة.</p>
-    </div>
+<div class="price-box">
+  <h3>فاخر</h3>
+  <div class="price">6500 EGP/m²</div>
+  <p>تشطيب فاخر وديكورات عالية الجودة.</p>
+</div>
+```
+
   </div>
 </section>
 
@@ -511,5 +521,46 @@ function generateDesign(){
   let luxury = area * 6500;
 
   document.getElementById('resultText').innerHTML = `
-  تم إنشاء تصور هندسي احترافي
-```
+  تم إنشاء تصور هندسي احترافي لمساحة ${area} متر بعدد ${rooms} غرف و ${floors} أدوار بتصميم ${style}.
+  `;
+
+  document.getElementById('pricing').innerHTML = `
+
+  <div class="price-box">
+    <h3>اقتصادي</h3>
+    <div class="price">${economic.toLocaleString()} EGP</div>
+    <p>تكلفة تقريبية للمشروع.</p>
+  </div>
+
+  <div class="price-box">
+    <h3>متوسط</h3>
+    <div class="price">${medium.toLocaleString()} EGP</div>
+    <p>تكلفة تقريبية للمشروع.</p>
+  </div>
+
+  <div class="price-box">
+    <h3>فاخر</h3>
+    <div class="price">${luxury.toLocaleString()} EGP</div>
+    <p>تكلفة تقريبية للمشروع.</p>
+  </div>
+
+  `;
+}
+
+function changeLang(lang){
+
+  if(lang === 'en'){
+    document.documentElement.lang = 'en';
+    document.documentElement.dir = 'ltr';
+  }
+  else{
+    document.documentElement.lang = 'ar';
+    document.documentElement.dir = 'rtl';
+  }
+}
+
+</script>
+
+</body>
+</html>
+
