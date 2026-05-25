@@ -230,12 +230,16 @@ import {
   push
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// ⚠️ خطوة هامة جداً: استبدل هذه المصفوفة بالبيانات الحقيقية لمشروعك من إعدادات مشروع Firebase
+// تم ربط بيانات الـ Firebase الحقيقية الخاصة بك بنجاح 🎉
 const firebaseConfig = {
-  apiKey: "ضع_هنا_API_KEY_الخاص_بمشروعك",
-  authDomain: "your-project.firebaseapp.com",
-  databaseURL: "https://credit-followars-default-rtdb.europe-west1.firebasedatabase.app/",
-  projectId: "your-project-id",
+  apiKey: "AIzaSyCTLNLYlJ5Y0e2N2a9F0iyQhW0rlC9R0qY",
+  authDomain: "credit-followars.firebaseapp.com",
+  databaseURL: "https://credit-followars-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "credit-followars",
+  storageBucket: "credit-followars.firebasestorage.app",
+  messagingSenderId: "211185964961",
+  appId: "1:211185964961:web:74b08a74abab84d359dde0",
+  measurementId: "G-JM36N6DDPS"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -381,7 +385,7 @@ window.addCredits = async function(){
     
     <div class="brand">
         <div class="logo">W</div>
-        <p>منصة إدارة الأرصدة الذكية</p>
+        <p>منصة إدارة الأرصدة والتبادل الذكي</p>
     </div>
 
     <div id="auth-card" class="card">
@@ -417,22 +421,22 @@ window.addCredits = async function(){
 
     <div id="app-card" class="card">
         <div class="balance-box">
-            <span>رصيدك الحالي من النقاط</span>
+            <span>رصيدك الحالي من نقاط المتابعين</span>
             <h2 id="credits-display">..</h2>
         </div>
         <button onclick="logout()" class="danger">تسجيل الخروج</button>
 
         <div id="admin-section" style="display:none">
             <div class="divider"></div>
-            <div class="admin-badge">لوحة التحكم للمسؤول</div>
-            <h3>إضافة رصيد لمسؤول آخر أو عضو</h3>
+            <div class="admin-badge">لوحة الإدارة للشركة</div>
+            <h3>تزويد نقاط لعضو</h3>
             <div class="input-group">
                 <input id="uid" placeholder="معرف المستخدم (UID)">
             </div>
             <div class="input-group">
-                <input id="amount" type="number" placeholder="كمية الرصيد">
+                <input id="amount" type="number" placeholder="كمية النقاط المضافة">
             </div>
-            <button onclick="addCredits()">تأكيد إضافة الرصيد</button>
+            <button onclick="addCredits()">تأكيد شحن النقاط</button>
         </div>
     </div>
 
