@@ -1,566 +1,442 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Ai Group</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W Company - منصة إدارة الرصيد</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Cairo',sans-serif;
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    body{
-      background:#070b14;
-      color:white;
-      overflow-x:hidden;
+    body {
+        background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+        color: #f8fafc;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
     }
 
-    .bg{
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top right,#00bfff22,transparent 25%),
-      radial-gradient(circle at bottom left,#8a2be222,transparent 30%),
-      #070b14;
-      z-index:-1;
+    .container {
+        width: 100%;
+        max-width: 480px;
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
 
-    header{
-      padding:20px 8%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      backdrop-filter:blur(10px);
-      position:sticky;
-      top:0;
-      background:#070b14cc;
-      z-index:999;
+    .brand {
+        text-align: center;
+        margin-bottom: 30px;
     }
 
-    .logo{
-      font-size:28px;
-      font-weight:800;
-      background:linear-gradient(90deg,#00c6ff,#8a2be2);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    .brand .logo {
+        font-size: 3rem;
+        font-weight: 900;
+        background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
     }
 
-    nav{
-      display:flex;
-      gap:25px;
+    .brand p {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        margin-top: 5px;
     }
 
-    nav a{
-      text-decoration:none;
-      color:white;
-      transition:.3s;
-      font-weight:600;
+    .card {
+        display: none;
     }
 
-    nav a:hover{
-      color:#00c6ff;
+    h3 {
+        font-size: 1.2rem;
+        color: #f1f5f9;
+        margin-bottom: 15px;
+        font-weight: 600;
     }
 
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:80px 8%;
-      gap:60px;
-      flex-wrap:wrap;
+    .input-group {
+        margin-bottom: 15px;
     }
 
-    .hero-text{
-      flex:1;
-      min-width:300px;
+    input {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: white;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        text-align: right;
     }
 
-    .hero-text h1{
-      font-size:65px;
-      line-height:1.2;
-      margin-bottom:20px;
+    input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
     }
 
-    .hero-text h1 span{
-      background:linear-gradient(90deg,#00c6ff,#8a2be2);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
     }
 
-    .hero-text p{
-      color:#c7c7c7;
-      line-height:2;
-      margin-bottom:30px;
-      font-size:18px;
+    button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
     }
 
-    .btn{
-      padding:15px 35px;
-      border:none;
-      border-radius:14px;
-      background:linear-gradient(90deg,#00c6ff,#8a2be2);
-      color:white;
-      font-size:17px;
-      cursor:pointer;
-      font-weight:700;
-      transition:.3s;
-      box-shadow:0 10px 30px rgba(0,198,255,.3);
+    button.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f1f5f9;
+        margin-top: 8px;
     }
 
-    .btn:hover{
-      transform:translateY(-3px) scale(1.03);
+    button.secondary:hover {
+        background: rgba(255, 255, 255, 0.15);
     }
 
-    .hero-image{
-      flex:1;
-      min-width:300px;
+    button.social-btn {
+        background: #ffffff;
+        color: #1f2937;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 12px;
+    }
+    
+    button.social-btn:hover {
+        background: #f3f4f6;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
     }
 
-    .hero-image img{
-      width:100%;
-      border-radius:30px;
-      border:2px solid rgba(255,255,255,.08);
-      box-shadow:0 20px 80px rgba(0,0,0,.5);
+    button.facebook-btn {
+        background: #1877f2;
+        color: white;
     }
 
-    section{
-      padding:90px 8%;
+    button.facebook-btn:hover {
+        background: #166fe5;
+        box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
     }
 
-    .section-title{
-      text-align:center;
-      margin-bottom:60px;
+    button.danger {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     }
 
-    .section-title h2{
-      font-size:45px;
-      margin-bottom:15px;
+    button.danger:hover {
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
     }
 
-    .section-title p{
-      color:#bbb;
-      max-width:700px;
-      margin:auto;
-      line-height:2;
+    .balance-box {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px dashed rgba(59, 130, 246, 0.3);
+        padding: 20px;
+        border-radius: 16px;
+        text-align: center;
+        margin-bottom: 20px;
     }
 
-    .features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
+    .balance-box span {
+        display: block;
+        font-size: 0.85rem;
+        color: #94a3b8;
     }
 
-    .card{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      padding:35px;
-      border-radius:24px;
-      transition:.3s;
-      backdrop-filter:blur(10px);
+    .balance-box h2 {
+        font-size: 2.2rem;
+        color: #3b82f6;
+        font-weight: 700;
+        margin-top: 5px;
     }
 
-    .card:hover{
-      transform:translateY(-8px);
-      border-color:#00c6ff;
+    .divider-container {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0;
+        color: #64748b;
+        font-size: 0.85rem;
     }
 
-    .card h3{
-      margin-bottom:15px;
-      font-size:24px;
+    .divider-container::before, .divider-container::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .card p{
-      color:#bbb;
-      line-height:1.9;
+    .divider-container:not(:empty)::before { margin-left: .25em; }
+    .divider-container:not(:empty)::after { margin-right: .25em; }
+
+    .divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 20px 0;
     }
 
-    .generator{
-      background:rgba(255,255,255,.04);
-      border-radius:30px;
-      padding:40px;
-      border:1px solid rgba(255,255,255,.08);
+    .admin-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        background: rgba(139, 92, 246, 0.2);
+        color: #a78bfa;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+</style>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { 
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  child,
+  update,
+  push
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+// ⚠️ خطوة هامة جداً: استبدل هذه المصفوفة بالبيانات الحقيقية لمشروعك من إعدادات مشروع Firebase
+const firebaseConfig = {
+  apiKey: "ضع_هنا_API_KEY_الخاص_بمشروعك",
+  authDomain: "your-project.firebaseapp.com",
+  databaseURL: "https://credit-followars-default-rtdb.europe-west1.firebasedatabase.app/",
+  projectId: "your-project-id",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+const googleProvider = new GoogleAuthProvider();
+const fbProvider = new FacebookAuthProvider();
+
+// ================= GOOGLE LOGIN =================
+window.loginWithGoogle = function() {
+    signInWithPopup(auth, googleProvider)
+    .then(async (result) => {
+        const user = result.user;
+        const snap = await get(child(ref(db), 'users/' + user.uid));
+        if (!snap.exists()) {
+            await set(ref(db, 'users/' + user.uid), {
+                credits: 4,
+                role: "user"
+            });
+        }
+    })
+    .catch(e => alert("فشل تسجيل الدخول بجوجل: " + e.message));
+}
+
+// ================= FACEBOOK LOGIN =================
+window.loginWithFacebook = function() {
+    signInWithPopup(auth, fbProvider)
+    .then(async (result) => {
+        const user = result.user;
+        const snap = await get(child(ref(db), 'users/' + user.uid));
+        if (!snap.exists()) {
+            await set(ref(db, 'users/' + user.uid), {
+                credits: 4,
+                role: "user"
+            });
+        }
+    })
+    .catch(e => alert("فشل تسجيل الدخول بفيسبوك: " + e.message));
+}
+
+// ================= EMAIL LOGIN =================
+window.login = function(){
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("pass").value;
+    if(!email || !pass) return alert("يرجى ملء جميع الحقول");
+
+    signInWithEmailAndPassword(auth, email, pass).catch(e => alert(e.message));
+}
+
+// ================= EMAIL REGISTER =================
+window.register = function(){
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("pass").value;
+    if(!email || !pass) return alert("يرجى ملء جميع الحقول");
+
+    createUserWithEmailAndPassword(auth, email, pass)
+    .then(user=>{
+        set(ref(db,'users/'+user.user.uid),{
+            credits: 4,
+            role: "user"
+        });
+    })
+    .catch(e => alert(e.message));
+}
+
+// ================= LOGOUT =================
+window.logout = function(){
+    signOut(auth);
+}
+
+// ================= STATE MANAGEMENT =================
+onAuthStateChanged(auth, async (user)=>{
+    const authCard = document.getElementById("auth-card");
+    const appCard = document.getElementById("app-card");
+    const adminSection = document.getElementById("admin-section");
+
+    if(user){
+        authCard.style.display = "none";
+        appCard.style.display = "block";
+
+        const snap = await get(child(ref(db),'users/'+user.uid));
+        if(snap.exists()){
+            const userData = snap.val();
+            document.getElementById("credits-display").innerText = userData.credits;
+            
+            if(userData.role === "admin") {
+                adminSection.style.display = "block";
+            } else {
+                adminSection.style.display = "none";
+            }
+        }
+        window.currentUser = user;
+    }else{
+        authCard.style.display = "block";
+        appCard.style.display = "none";
+        adminSection.style.display = "none";
+    }
+});
+
+// ================= ADD CREDITS =================
+window.addCredits = async function(){
+    if (!window.currentUser) return alert("غير مصرح لك");
+
+    let uid = document.getElementById("uid").value;
+    let amount = parseInt(document.getElementById("amount").value);
+
+    if(!uid || isNaN(amount) || amount <= 0) {
+        return alert("يرجى إدخال معرف مستخدم صحيح وكمية أكبر من الصفر");
     }
 
-    .form-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:20px;
-      margin-top:30px;
+    const snap = await get(child(ref(db),'users/'+uid));
+
+    if(snap.exists()){
+        let current = snap.val().credits;
+
+        try {
+            await update(ref(db,'users/'+uid),{
+                credits: current + amount
+            });
+
+            await push(ref(db,'transactions'),{
+                to: uid,
+                amount: amount,
+                time: Date.now()
+            });
+
+            alert("تم إضافة الرصيد بنجاح 🎉");
+            document.getElementById("uid").value = "";
+            document.getElementById("amount").value = "";
+        } catch (error) {
+            alert("فشلت العملية: لا تملك صلاحيات مسؤول.");
+        }
+    } else {
+        alert("المستخدم غير موجود");
     }
-
-    input,select{
-      width:100%;
-      padding:15px;
-      border:none;
-      border-radius:14px;
-      background:#111827;
-      color:white;
-      font-size:15px;
-      outline:none;
-    }
-
-    .result{
-      margin-top:40px;
-      display:none;
-      animation:fade .7s ease;
-    }
-
-    @keyframes fade{
-      from{opacity:0;transform:translateY(20px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
-    .result img{
-      width:100%;
-      border-radius:25px;
-      margin-top:20px;
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .pricing{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:25px;
-      margin-top:40px;
-    }
-
-    .price-box{
-      background:#111827;
-      padding:30px;
-      border-radius:24px;
-      text-align:center;
-      border:1px solid rgba(255,255,255,.06);
-    }
-
-    .price-box h3{
-      margin-bottom:15px;
-      font-size:25px;
-    }
-
-    .price{
-      font-size:35px;
-      font-weight:800;
-      color:#00c6ff;
-      margin-bottom:15px;
-    }
-
-    footer{
-      padding:40px 8%;
-      border-top:1px solid rgba(255,255,255,.08);
-      text-align:center;
-      color:#aaa;
-      line-height:2;
-    }
-
-    .warning{
-      background:#3a1f1f;
-      border:1px solid #ff4d4d;
-      color:#ffdede;
-      padding:20px;
-      border-radius:18px;
-      margin-top:30px;
-      line-height:2;
-    }
-
-    .lang{
-      background:#111827;
-      border:none;
-      color:white;
-      padding:10px 15px;
-      border-radius:12px;
-    }
-
-    @media(max-width:768px){
-      .hero-text h1{
-        font-size:42px;
-      }
-
-      nav{
-        display:none;
-      }
-    }
-  </style>
-
+}
+</script>
 </head>
+
 <body>
 
-<div class="bg"></div>
-
-<header>
-  <div class="logo">Build Ai Group</div>
-
-  <nav>
-    <a href="#home">الرئيسية</a>
-    <a href="#features">المميزات</a>
-    <a href="#planner">التصميم الذكي</a>
-    <a href="#pricing">التكلفة</a>
-    <a href="#contact">تواصل</a>
-  </nav>
-
-  <select class="lang" onchange="changeLang(this.value)">
-    <option value="ar">العربية</option>
-    <option value="en">English</option>
-  </select>
-</header>
-
-<section class="hero" id="home">
-  <div class="hero-text">
-    <h1>
-      صمم بيتك ومدينتك بـ <span>الذكاء الاصطناعي</span>
-    </h1>
-
-```
-<p>
-  منصة Build Ai Group تقوم بإنشاء مخططات ذكية وصور واقعية وتصميمات 3D مع حساب تكلفة البناء بشكل احترافي بناءً على مساحة الأرض والطول والعرض وعدد الغرف ونوع التشطيب.
-</p>
-
-<button class="btn" onclick="scrollToPlanner()">
-  ابدأ التصميم الآن
-</button>
-```
-
-  </div>
-
-  <div class="hero-image">
-    <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1400&auto=format&fit=crop" alt="AI Architecture">
-  </div>
-</section>
-
-<section id="features">
-  <div class="section-title">
-    <h2>مميزات المنصة</h2>
-    <p>
-      نظام هندسي ذكي يساعدك على تصميم المنازل والشقق والعمارات مع توزيع احترافي للمساحات والتكلفة.
-    </p>
-  </div>
-
-  <div class="features">
-    <div class="card">
-      <h3>تصميم ذكي</h3>
-      <p>
-        إنشاء مخططات معمارية ذكية بناءً على المساحة والطول والعرض وعدد الغرف.
-      </p>
+<div class="container">
+    
+    <div class="brand">
+        <div class="logo">W</div>
+        <p>منصة إدارة الأرصدة الذكية</p>
     </div>
 
-```
-<div class="card">
-  <h3>صور واقعية</h3>
-  <p>
-    توليد صور احترافية للمبنى والتشطيب والديكور الخارجي والداخلي.
-  </p>
-</div>
+    <div id="auth-card" class="card">
+        <h3>تسجيل الدخول إلى حسابك</h3>
+        <div class="input-group">
+            <input id="email" type="email" placeholder="البريد الإلكتروني">
+        </div>
+        <div class="input-group">
+            <input id="pass" type="password" placeholder="كلمة المرور">
+        </div>
+        <button onclick="login()">تسجيل الدخول</button>
+        <button onclick="register()" class="secondary">إنشاء حساب جديد</button>
+        
+        <div class="divider-container">أو عبر المنصات</div>
+        
+        <button onclick="loginWithGoogle()" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.61c-.29 1.53-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-8.58z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.11 0-5.74-2.11-6.68-4.96H1.21v3.15C3.18 21.88 7.31 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.32 14.24A7.16 7.16 0 0 1 5 12c0-.79.13-1.57.32-2.34V6.51H1.21A11.94 11.94 0 0 0 0 12c0 1.92.45 3.74 1.21 5.39l4.11-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.18 2.12 1.21 5.39l4.11 3.15c.94-2.85 3.57-4.96 6.68-4.96z"/>
+            </svg>
+            المتابعة باستخدام Google
+        </button>
 
-<div class="card">
-  <h3>حساب التكلفة</h3>
-  <p>
-    حساب تكلفة تقريبية للبناء والتشطيب والكهرباء والسباكة حسب السوق.
-  </p>
-</div>
-
-<div class="card">
-  <h3>3D Preview</h3>
-  <p>
-    عرض ثلاثي الأبعاد للمشروع بشكل حديث ومتطور.
-  </p>
-</div>
-```
-
-  </div>
-</section>
-
-<section id="planner">
-  <div class="section-title">
-    <h2>AI Smart Planner</h2>
-    <p>
-      أدخل بيانات مشروعك وسيقوم النظام بإنشاء تصور هندسي احترافي.
-    </p>
-  </div>
-
-  <div class="generator">
-
-```
-<div class="form-grid">
-  <input type="number" id="area" placeholder="المساحة بالمتر">
-  <input type="number" id="width" placeholder="الطول بالمتر">
-  <input type="number" id="height" placeholder="العرض بالمتر">
-
-  <select id="rooms">
-    <option>عدد الغرف</option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select>
-
-  <select id="floors">
-    <option>عدد الأدوار</option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-  </select>
-
-  <select id="style">
-    <option>نوع التصميم</option>
-    <option>مودرن</option>
-    <option>كلاسيك</option>
-    <option>فاخر</option>
-  </select>
-</div>
-
-<br>
-
-<button class="btn" onclick="generateDesign()">
-  Generate AI Design
-</button>
-
-<div class="result" id="result">
-  <h2>النتيجة النهائية</h2>
-
-  <p id="resultText"></p>
-
-  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400&auto=format&fit=crop" alt="Generated House">
-
-  <div class="pricing" id="pricing">
-  </div>
-
-  <div class="warning">
-    الأسعار الظاهرة تقديرية حسب متوسط أسعار السوق الحالية وقد تختلف حسب المنطقة والخامات والمقاول. يجب استشارة مهندس أو مقاول متخصص قبل التنفيذ الفعلي.
-  </div>
-</div>
-```
-
-  </div>
-</section>
-
-<section id="pricing">
-  <div class="section-title">
-    <h2>أنظمة التكلفة</h2>
-    <p>
-      خيارات متنوعة تناسب جميع الميزانيات.
-    </p>
-  </div>
-
-  <div class="pricing">
-    <div class="price-box">
-      <h3>اقتصادي</h3>
-      <div class="price">3000 EGP/m²</div>
-      <p>تشطيب اقتصادي وخامات جيدة.</p>
+        <button onclick="loginWithFacebook()" class="social-btn facebook-btn">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+            </svg>
+            المتابعة باستخدام Facebook
+        </button>
     </div>
 
-```
-<div class="price-box">
-  <h3>متوسط</h3>
-  <div class="price">4500 EGP/m²</div>
-  <p>تشطيب مودرن وخامات ممتازة.</p>
+    <div id="app-card" class="card">
+        <div class="balance-box">
+            <span>رصيدك الحالي من النقاط</span>
+            <h2 id="credits-display">..</h2>
+        </div>
+        <button onclick="logout()" class="danger">تسجيل الخروج</button>
+
+        <div id="admin-section" style="display:none">
+            <div class="divider"></div>
+            <div class="admin-badge">لوحة التحكم للمسؤول</div>
+            <h3>إضافة رصيد لمسؤول آخر أو عضو</h3>
+            <div class="input-group">
+                <input id="uid" placeholder="معرف المستخدم (UID)">
+            </div>
+            <div class="input-group">
+                <input id="amount" type="number" placeholder="كمية الرصيد">
+            </div>
+            <button onclick="addCredits()">تأكيد إضافة الرصيد</button>
+        </div>
+    </div>
+
 </div>
-
-<div class="price-box">
-  <h3>فاخر</h3>
-  <div class="price">6500 EGP/m²</div>
-  <p>تشطيب فاخر وديكورات عالية الجودة.</p>
-</div>
-```
-
-  </div>
-</section>
-
-<footer id="contact">
-  <h2>Build Ai Group</h2>
-  <p>
-    شركة Amr Group
-    <br>
-    المهندس عمرو صلاح
-    <br>
-    للتواصل: 01107545181
-  </p>
-
-  <br>
-
-  <p>
-    © 2026 Build Ai Group — All Rights Reserved
-  </p>
-</footer>
-
-<script>
-
-function scrollToPlanner(){
-  document.getElementById('planner').scrollIntoView({
-    behavior:'smooth'
-  });
-}
-
-function generateDesign(){
-
-  let area = document.getElementById('area').value;
-  let rooms = document.getElementById('rooms').value;
-  let floors = document.getElementById('floors').value;
-  let style = document.getElementById('style').value;
-
-  if(area == ''){
-    alert('من فضلك أدخل المساحة');
-    return;
-  }
-
-  document.getElementById('result').style.display='block';
-
-  let economic = area * 3000;
-  let medium = area * 4500;
-  let luxury = area * 6500;
-
-  document.getElementById('resultText').innerHTML = `
-  تم إنشاء تصور هندسي احترافي لمساحة ${area} متر بعدد ${rooms} غرف و ${floors} أدوار بتصميم ${style}.
-  `;
-
-  document.getElementById('pricing').innerHTML = `
-
-  <div class="price-box">
-    <h3>اقتصادي</h3>
-    <div class="price">${economic.toLocaleString()} EGP</div>
-    <p>تكلفة تقريبية للمشروع.</p>
-  </div>
-
-  <div class="price-box">
-    <h3>متوسط</h3>
-    <div class="price">${medium.toLocaleString()} EGP</div>
-    <p>تكلفة تقريبية للمشروع.</p>
-  </div>
-
-  <div class="price-box">
-    <h3>فاخر</h3>
-    <div class="price">${luxury.toLocaleString()} EGP</div>
-    <p>تكلفة تقريبية للمشروع.</p>
-  </div>
-
-  `;
-}
-
-function changeLang(lang){
-
-  if(lang === 'en'){
-    document.documentElement.lang = 'en';
-    document.documentElement.dir = 'ltr';
-  }
-  else{
-    document.documentElement.lang = 'ar';
-    document.documentElement.dir = 'rtl';
-  }
-}
-
-</script>
 
 </body>
 </html>
-
